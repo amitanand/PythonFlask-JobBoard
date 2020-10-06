@@ -1,19 +1,27 @@
 <!-- templates/_marcos.html -->
 <!-- show_job -->
-show_job = new HTML:: Macro(job);
+{% macro  show_job(job) %}
 <div class="card adjust-height">
   <header class="card-header">
     <p class="card-header-title">
-        <a> {{job['Title]}} </a>
+        <a href=""> {{job['Title]}} </a>
     </p>
   </header>
   <div class="card-content">
     <div class="content">
         <p>
-            <a> {{ job['employer_name] }} <br>
+            <a href=""> {{ job['employer_name] }} </a><br>
                 ${{ job['salary'] }} <br>
-                {{ job['description'] }} </a>
+                {{ job['description'] }}
         </p>
     </div>
   </div>
 </div>
+{% endmacro %}
+
+{% macro show_jobs(jobs) %}
+<div class="columns is-multiline">
+    {% for job in jobs}
+        <div class = "column is-half">
+            {{ show_job(jobs) }}
+
